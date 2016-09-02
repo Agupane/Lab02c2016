@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Lab02c2016</string>
+    <!-- Textos de interfaz -->
+    <string name="textPediteLaCena">Pedite la cena!</string>
+    <string name="textBotonReservar">Reservar Mesa</string>
+    <string name="textSeleccionHorario">Seleccione el horario</string>
+    <string name="spinnerHorarios">Pedidos Horario</string>
+    <string name="textNotificarReserva">Notificar reserva 1 hora antes</string>
+    <string name="btnPlato">Plato</string>
+    <string name="btnPostre">Postre</string>
+    <string name="btnBebida">Bebida</string>
+    <string name="btnAgregar">Agregar</string>
+    <string name="btnConfimar">Confirmar Pedido</string>
+    <string name="btnReiniciar">Reiniciar</string>
+    <string name="datosPedido_default"></string>
+    <!-- Textos de interfaz -->
+</resources>

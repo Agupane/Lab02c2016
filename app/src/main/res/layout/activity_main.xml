@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="ar.edu.utn.frsf.isi.dam.MainActivity"
+    android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/textPediteLaCena"
+            android:id="@+id/tvPediteLaCena" />
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textBotonReservar"
+            android:id="@+id/tbReservarMesa"
+            android:checked="false"
+            android:textOff="@string/textBotonReservar"
+            android:textOn="Delivery" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/textSeleccionHorario"
+            android:id="@+id/tvSeleccioneHorario" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:id="@+id/spinnerHorarios"
+            android:spinnerMode="dropdown" />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textNotificarReserva"
+            android:id="@+id/switchReserva"
+            android:checked="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/datosPedido_default"
+            android:id="@+id/tvDatosPedidos" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/radioGroupBotones">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnPlato"
+                android:id="@+id/rbPlato"
+                android:checked="false"
+                android:layout_marginLeft="15dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnPostre"
+                android:id="@+id/rbPostre"
+                android:checked="false"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="5dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnBebida"
+                android:id="@+id/rbBebida"
+                android:checked="false"
+                 />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/btnAgregar"
+                android:id="@+id/buttonAgregar" />
+
+            <Button
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:text="@string/btnConfimar"
+                android:id="@+id/buttonConfirmarPedido" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnReiniciar"
+                android:id="@+id/buttonReiniciar" />
+        </LinearLayout>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listViewPedidos"
+            android:choiceMode="multipleChoice"
+            android:drawSelectorOnTop="true" />
+
+</LinearLayout>
