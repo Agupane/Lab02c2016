@@ -17,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private String[] horarios;
     private ArrayList<String> horariosArrayList;
     private double precioTotal = 0;
+    private boolean pedidoConfirmado = false;
 
     private  ElementoMenu[] listaBebidas;
     private  ElementoMenu[] listaPlatos;
@@ -165,30 +167,44 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         switch (v.getId()) {
 
             case R.id.buttonAgregar:{
-
+                boolean seleccion = false;
                 SparseBooleanArray itemsSelect = lvPedidos.getCheckedItemPositions();
-                for(int i=0 ; i<lvPedidos.getCount();i++){
-                    if (itemsSelect.get(i)) {
-                        String[] texto = ((String) lvPedidos.getItemAtPosition(i)).split("\\(");
-                        String[] texto2 = texto[1].split("\\)");
-                        String valor = texto2[0];
-                        precioTotal += Double.parseDouble(valor);
-                        tvDatosPedidos.append(((String) lvPedidos.getItemAtPosition(i)) + "\n");
+                if(!pedidoConfirmado){
+                    for(int i=0 ; i<lvPedidos.getCount();i++){
+                        if (itemsSelect.get(i)) {
+                            if(!seleccion) seleccion = true;
+                            String[] texto = ((String) lvPedidos.getItemAtPosition(i)).split("\\(");
+                            String[] texto2 = texto[1].split("\\)");
+                            String valor = texto2[0];
+                            precioTotal += Double.parseDouble(valor);
+                            tvDatosPedidos.append(((String) lvPedidos.getItemAtPosition(i)) + "\n");
+                        }
                     }
+                    if(!seleccion){
+                        Toast toast = Toast.makeText(getApplicationContext(), "Debe seleccionar al menos un elemento", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                    lvPedidos.clearChoices();
+                    listViewAdapter.notifyDataSetChanged();
                 }
-                lvPedidos.clearChoices();
-                listViewAdapter.notifyDataSetChanged();
+                else{
+                    Toast toast = Toast.makeText(getApplicationContext(), "El pedido ya ha sido confirmado", Toast.LENGTH_LONG);
+                    toast.show();
+                }
+
                 break;
             }
             case R.id.buttonConfirmarPedido:{
                 tvDatosPedidos.append("Costo Total: "+precioTotal);
-
+                pedidoConfirmado=true;
                 break;
             }
             case R.id.buttonReiniciar: {
                 tvDatosPedidos.setText("");
                 lvPedidos.clearChoices();
                 listViewAdapter.notifyDataSetChanged();
+                precioTotal = 0;
+                pedidoConfirmado=false;
                 break;
             }
         }
